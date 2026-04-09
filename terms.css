@@ -1,0 +1,47 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #efefef;
+  color: #111;
+}
+
+.terms-wrap {
+  min-height: 100vh;
+}
+
+.terms-logo {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  height: auto;
+}
+
+.terms-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: #efefef;
+  padding: 28px 24px 40px;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+h1, h2 {
+  margin: 0 0 22px;
+  font-size: 24px;
+}
+
+ul {
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 16px;
+}
+
+.back-link {
+  color: #1b4fcf;
+}
