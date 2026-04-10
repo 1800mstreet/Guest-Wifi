@@ -23,7 +23,7 @@ function connect(event) {
   }
 
   const emailValue = email.value.trim();
-  const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(emailValue)) {
     email.classList.add('input-error');
     errorMessage.textContent = 'Please enter a valid email address.';
