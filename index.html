@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1800M Guest Wi‑Fi</title>
+  <title>1800M Guest Wi-Fi</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,16 +13,18 @@
     </header>
 
     <main class="card">
-      <form onsubmit="return connect(event)">
-        <input type="text" placeholder="First name" />
-        <input type="text" placeholder="Last name" />
-        <input type="email" placeholder="Email" />
-        <input type="text" placeholder="Phone" />
+      <form id="guestForm" onsubmit="return connect(event)">
+        <input type="text" id="firstName" name="firstName" placeholder="First name" required />
+        <input type="text" id="lastName" name="lastName" placeholder="Last name" required />
+        <input type="email" id="email" name="email" placeholder="Email" required />
+        <input type="tel" id="phone" name="phone" placeholder="Phone" required />
 
         <label class="agree-row">
           <input type="checkbox" id="agree" />
           <span>I agree to the <a href="terms.html">Terms and Conditions</a></span>
         </label>
+
+        <div id="errorMessage" class="error-message"></div>
 
         <button type="submit">Connect</button>
       </form>
