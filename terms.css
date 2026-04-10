@@ -3,11 +3,11 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* IMAGE TOP */
+/* TOP IMAGE */
 .top-image {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 180px;
   overflow: hidden;
 }
 
@@ -17,25 +17,25 @@ body {
   object-fit: cover;
 }
 
-/* BIG TEXT */
+/* TEXT ON IMAGE */
 .title {
   position: absolute;
-  bottom: 20px;
+  top: 50%;
   left: 20px;
-  font-size: 80px;
-  font-weight: bold;
+  transform: translateY(-50%);
+  font-size: 70px;
+  font-weight: 900;
   color: white;
-  letter-spacing: 2px;
 }
 
 .title span {
-  font-size: 40px;
+  font-size: 32px;
   margin-left: 5px;
 }
 
-/* CONTENT SECTION */
+/* CONTENT */
 .content {
-  background: #e9e9e9;
+  background: #e6e6e6;
   padding: 25px;
   line-height: 1.7;
   color: #222;
