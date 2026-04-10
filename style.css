@@ -77,6 +77,17 @@ form input::placeholder {
   text-decoration: underline;
 }
 
+.error-message {
+  color: #b00020;
+  font-size: 16px;
+  margin: -6px 0 18px;
+  min-height: 22px;
+}
+
+.input-error {
+  border-color: #b00020 !important;
+}
+
 button {
   width: 100%;
   border: none;
@@ -117,5 +128,9 @@ button:hover {
 
   .agree-row {
     font-size: 15px;
+  }
+
+  .error-message {
+    font-size: 14px;
   }
 }
