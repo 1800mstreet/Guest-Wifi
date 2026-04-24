@@ -1,36 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1800M Guest Wi-Fi</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1800M WiFi</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.4);
+}
+
+.container {
+    position: relative;
+    width: 420px;
+    background: rgba(255,255,255,0.85);
+    padding: 25px;
+    text-align: center;
+}
+
+.logo {
+    position: absolute;
+    top: -90px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.logo span {
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.checkbox {
+    font-size: 13px;
+    text-align: left;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #0b4a52;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #08373d;
+}
+
+a {
+    color: #0066cc;
+}
+</style>
+
 </head>
+
 <body>
-  <div class="page-wrap">
-    <header class="hero">
-      <img src="logo-1800m.svg" alt="1800M ST" class="logo" />
-    </header>
 
-    <main class="card">
-      <form id="guestForm" onsubmit="return connect(event)">
-        <input type="text" id="firstName" name="firstName" placeholder="First name" required />
-        <input type="text" id="lastName" name="lastName" placeholder="Last name" required />
-        <input type="email" id="email" name="email" placeholder="Email" required />
-        <input type="tel" id="phone" name="phone" placeholder="Phone" required />
+<div class="overlay"></div>
 
-        <label class="agree-row">
-          <input type="checkbox" id="agree" />
-          <span>I agree to the <a href="terms.html">Terms and Conditions</a></span>
-        </label>
+<div class="logo">1800M <span>ST</span></div>
 
-        <div id="errorMessage" class="error-message"></div>
+<div class="container">
+    <input type="text" placeholder="First name">
+    <input type="text" placeholder="Last name">
+    <input type="email" placeholder="Email">
+    <input type="text" placeholder="Phone">
 
-        <button type="submit">Connect</button>
-      </form>
-    </main>
-  </div>
+    <div class="checkbox">
+        <input type="checkbox"> I agree to the 
+        <a href="terms.html">Terms and Conditions</a>
+    </div>
 
-  <script src="splash.js"></script>
+    <button>Connect</button>
+</div>
+
 </body>
 </html>
