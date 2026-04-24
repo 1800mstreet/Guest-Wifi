@@ -1,58 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>1800M Guest WiFi</title>
-  <style>
-    html, body { margin:0; min-height:100%; background:#fff; font-family: Arial, Helvetica, sans-serif; }
-    .page { width:750px; height:1334px; margin:0 auto; position:relative; background:url('assets/login-background.png') top center / 750px 1334px no-repeat; }
-    form { position:absolute; left:0; top:0; width:750px; height:1334px; }
-    input { position:absolute; left:96px; width:557px; height:78px; box-sizing:border-box; border:0; outline:0; background:transparent; color:#333; font-size:25px; padding:0 24px; }
-    input::placeholder { color:transparent; }
-    #first { top:436px; }
-    #last { top:554px; }
-    #email { top:674px; }
-    #phone { top:793px; }
-    button { position:absolute; left:94px; top:939px; width:560px; height:88px; border:0; background:transparent; color:transparent; cursor:pointer; }
-    .terms-link { position:absolute; left:0; top:1277px; width:750px; height:45px; display:block; }
-    @media (max-width: 750px) {
-      .page { width:100vw; height:177.8667vw; background-size:100vw 177.8667vw; }
-      form { width:100%; height:100%; }
-      input { left:12.8vw; width:74.27vw; height:10.4vw; font-size:3.33vw; padding:0 3.2vw; }
-      #first { top:58.13vw; }
-      #last { top:73.87vw; }
-      #email { top:89.87vw; }
-      #phone { top:105.73vw; }
-      button { left:12.53vw; top:125.2vw; width:74.67vw; height:11.73vw; }
-      .terms-link { top:170.27vw; width:100%; height:6vw; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1800M Guest WiFi</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; font-family: Arial, Helvetica, sans-serif; }
+  .page { position: relative; width: min(100vw, 750px); aspect-ratio: 750 / 1334; margin: 0 auto; background-image: url('assets/login-background.png'); background-repeat: no-repeat; background-position: top center; background-size: 100% 100%; overflow: hidden; }
+  form { margin: 0; padding: 0; }
+  .wifi-input { position: absolute; left: 12.8%; width: 74.2%; height: 5.85%; box-sizing: border-box; border: 2px solid #a8a8a8; background: #ffffff; color: #111111; font-size: clamp(12px, 3.4vw, 26px); line-height: 1; padding: 0 3%; border-radius: 0; outline: none; font-family: Arial, Helvetica, sans-serif; }
+  .wifi-input::placeholder { color: #8a8a8a; opacity: 1; }
+  .wifi-input:focus { border-color: #777777; }
+  #firstName { top: 32.7%; } #lastName { top: 41.55%; } #email { top: 50.55%; } #phone { top: 59.35%; }
+  .connect-btn { position: absolute; left: 12.55%; top: 70.48%; width: 74.65%; height: 6.68%; border: 0; background: #004a57; color: #ffffff; font-size: clamp(18px, 5.1vw, 38px); font-family: Arial, Helvetica, sans-serif; cursor: pointer; }
+  .terms-link { position: absolute; left: 0; right: 0; top: 96.05%; text-align: center; font-size: clamp(16px, 4.2vw, 32px); font-family: Arial, Helvetica, sans-serif; }
+  .terms-link a { color: #004eea; text-decoration: underline; }
+</style>
 </head>
 <body>
-  <div class="page">
+  <main class="page">
     <form id="wifiForm">
-      <input id="first" name="first_name" type="text" placeholder="First name" required autocomplete="given-name">
-      <input id="last" name="last_name" type="text" placeholder="Last name" required autocomplete="family-name">
-      <input id="email" name="email" type="email" placeholder="Email" required autocomplete="email">
-      <input id="phone" name="phone" type="tel" placeholder="Phone" required autocomplete="tel">
-      <button type="submit">Connect</button>
+      <input class="wifi-input" id="firstName" name="first_name" type="text" placeholder="First name" autocomplete="given-name" required />
+      <input class="wifi-input" id="lastName" name="last_name" type="text" placeholder="Last name" autocomplete="family-name" required />
+      <input class="wifi-input" id="email" name="email" type="email" placeholder="Email" autocomplete="email" required />
+      <input class="wifi-input" id="phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel" required />
+      <button class="connect-btn" type="submit">Connect</button>
     </form>
-    <a class="terms-link" href="terms.html" aria-label="Terms and Conditions"></a>
-  </div>
-  <script>
-    document.getElementById('wifiForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (!this.checkValidity()) { this.reportValidity(); return; }
-      const p = new URLSearchParams(window.location.search);
-      const userContinue = p.get('user_continue_url') || p.get('continue_url') || p.get('redirect_url') || 'https://www.google.com';
-      const baseGrant = p.get('base_grant_url');
-      if (baseGrant) {
-        window.location.href = baseGrant + '?continue_url=' + encodeURIComponent(userContinue);
-      } else {
-        window.location.href = userContinue;
-      }
-    });
-  </script>
+    <div class="terms-link"><a href="terms.html">Terms and Conditions</a></div>
+  </main>
+<script>
+(function () {
+  const form = document.getElementById('wifiForm');
+  function getParam(name) { return new URLSearchParams(window.location.search).get(name) || ''; }
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const guestInfo = {
+      first_name: document.getElementById('firstName').value.trim(),
+      last_name: document.getElementById('lastName').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      submitted_at: new Date().toISOString()
+    };
+    try { sessionStorage.setItem('guest_wifi_info', JSON.stringify(guestInfo)); } catch (e) {}
+    const baseGrantUrl = getParam('base_grant_url');
+    const continueUrl = getParam('user_continue_url') || 'https://www.google.com/';
+    if (baseGrantUrl) {
+      const separator = baseGrantUrl.includes('?') ? '&' : '?';
+      window.location.href = baseGrantUrl + separator + 'continue_url=' + encodeURIComponent(continueUrl);
+    } else {
+      alert('This page must be opened through the Meraki splash redirect to grant internet access.');
+    }
+  });
+})();
+</script>
 </body>
 </html>
