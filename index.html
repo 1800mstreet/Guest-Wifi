@@ -1,88 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>1800M Guest WiFi</title>
   <style>
-    * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; font-family: Arial, Helvetica, sans-serif; }
-    body {
-      background: #fff url('assets/login-background.png') center top / cover no-repeat;
-      display: flex;
-      justify-content: center;
-    }
-    .page {
-      width: 750px;
-      min-height: 1334px;
-      position: relative;
-      background: url('assets/login-background.png') center top / cover no-repeat;
-      overflow: hidden;
-    }
-    .logo {
-      width: 590px;
-      display: block;
-      margin: 58px auto 28px;
-    }
-    .form-box {
-      width: 642px;
-      margin: 0 auto;
-      padding: 58px 40px 62px;
-      background: rgba(255, 255, 255, 0.82);
-    }
-    input {
-      display: block;
-      width: 100%;
-      height: 79px;
-      margin-bottom: 40px;
-      padding: 0 22px;
-      border: 2px solid #aaa;
-      font-size: 26px;
-      color: #333;
-      background: rgba(255,255,255,0.95);
-    }
-    input::placeholder { color: #8b8b8b; }
-    button {
-      width: 100%;
-      height: 88px;
-      margin-top: 28px;
-      border: 0;
-      background: #064a56;
-      color: #fff;
-      font-size: 36px;
-      cursor: pointer;
-    }
-    .terms-link {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 20px;
-      text-align: center;
-      font-size: 32px;
-    }
-    .terms-link a { color: #004eea; text-decoration: underline; }
-    @media (max-width: 760px) {
-      body { display: block; }
-      .page { width: 100vw; min-height: 100vh; }
-      .logo { width: 79vw; margin-top: 7.7vw; margin-bottom: 3.7vw; }
-      .form-box { width: 85.6vw; padding: 7.7vw 5.3vw 8.3vw; }
-      input { height: 10.5vw; margin-bottom: 5.3vw; padding: 0 2.9vw; font-size: 3.45vw; }
-      button { height: 11.7vw; margin-top: 3.7vw; font-size: 4.8vw; }
-      .terms-link { font-size: 4.25vw; bottom: 2.7vw; }
+    html, body { margin:0; min-height:100%; background:#fff; font-family: Arial, Helvetica, sans-serif; }
+    .page { width:750px; height:1334px; margin:0 auto; position:relative; background:url('assets/login-background.png') top center / 750px 1334px no-repeat; }
+    form { position:absolute; left:0; top:0; width:750px; height:1334px; }
+    input { position:absolute; left:96px; width:557px; height:78px; box-sizing:border-box; border:0; outline:0; background:transparent; color:#333; font-size:25px; padding:0 24px; }
+    input::placeholder { color:transparent; }
+    #first { top:436px; }
+    #last { top:554px; }
+    #email { top:674px; }
+    #phone { top:793px; }
+    button { position:absolute; left:94px; top:939px; width:560px; height:88px; border:0; background:transparent; color:transparent; cursor:pointer; }
+    .terms-link { position:absolute; left:0; top:1277px; width:750px; height:45px; display:block; }
+    @media (max-width: 750px) {
+      .page { width:100vw; height:177.8667vw; background-size:100vw 177.8667vw; }
+      form { width:100%; height:100%; }
+      input { left:12.8vw; width:74.27vw; height:10.4vw; font-size:3.33vw; padding:0 3.2vw; }
+      #first { top:58.13vw; }
+      #last { top:73.87vw; }
+      #email { top:89.87vw; }
+      #phone { top:105.73vw; }
+      button { left:12.53vw; top:125.2vw; width:74.67vw; height:11.73vw; }
+      .terms-link { top:170.27vw; width:100%; height:6vw; }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <img class="logo" src="assets/1800m-header.png" alt="1800M ST" />
-    <form class="form-box" method="GET" action="http://www.msftconnecttest.com/redirect">
-      <input type="text" name="first_name" placeholder="First name" required />
-      <input type="text" name="last_name" placeholder="Last name" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="tel" name="phone" placeholder="Phone" required />
+  <div class="page">
+    <form id="wifiForm">
+      <input id="first" name="first_name" type="text" placeholder="First name" required autocomplete="given-name">
+      <input id="last" name="last_name" type="text" placeholder="Last name" required autocomplete="family-name">
+      <input id="email" name="email" type="email" placeholder="Email" required autocomplete="email">
+      <input id="phone" name="phone" type="tel" placeholder="Phone" required autocomplete="tel">
       <button type="submit">Connect</button>
     </form>
-    <div class="terms-link"><a href="terms.html">Terms and Conditions</a></div>
-  </main>
+    <a class="terms-link" href="terms.html" aria-label="Terms and Conditions"></a>
+  </div>
+  <script>
+    document.getElementById('wifiForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!this.checkValidity()) { this.reportValidity(); return; }
+      const p = new URLSearchParams(window.location.search);
+      const userContinue = p.get('user_continue_url') || p.get('continue_url') || p.get('redirect_url') || 'https://www.google.com';
+      const baseGrant = p.get('base_grant_url');
+      if (baseGrant) {
+        window.location.href = baseGrant + '?continue_url=' + encodeURIComponent(userContinue);
+      } else {
+        window.location.href = userContinue;
+      }
+    });
+  </script>
 </body>
 </html>
