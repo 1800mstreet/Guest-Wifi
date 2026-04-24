@@ -1,124 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=750, initial-scale=1.0" />
-  <title>1800M ST Wi-Fi</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1800M Guest WiFi</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; font-family: Arial, Helvetica, sans-serif; }
+    body {
+      background: #fff url('assets/login-background.png') center top / cover no-repeat;
+      display: flex;
+      justify-content: center;
     }
-
     .page {
       width: 750px;
       min-height: 1334px;
-      margin: 0 auto;
       position: relative;
+      background: url('assets/login-background.png') center top / cover no-repeat;
       overflow: hidden;
-      background: #ffffff;
-      border-left: 1px solid #ffffff;
-      border-right: 1px solid #ffffff;
-      box-sizing: border-box;
     }
-
-    .bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('assets/1800m-header.png');
-      background-size: cover;
-      background-position: center top;
-      filter: none;
-      transform: scale(3.15);
-      transform-origin: top center;
-      opacity: 1;
-    }
-
     .logo {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: 260px;
-      background-image: url('assets/1800m-header.png');
-      background-size: cover;
-      background-position: center top;
+      width: 590px;
+      display: block;
+      margin: 58px auto 28px;
     }
-
     .form-box {
-      position: relative;
-      z-index: 2;
-      width: 640px;
-      margin: 101px auto 0 auto;
-      padding: 72px 40px 62px 40px;
-      box-sizing: border-box;
-      background: rgba(255,255,255,0.86);
+      width: 642px;
+      margin: 0 auto;
+      padding: 58px 40px 62px;
+      background: rgba(255, 255, 255, 0.82);
     }
-
-    input[type="text"], input[type="email"], input[type="tel"] {
+    input {
+      display: block;
       width: 100%;
-      height: 80px;
-      margin: 0 0 39px 0;
+      height: 79px;
+      margin-bottom: 40px;
       padding: 0 22px;
-      box-sizing: border-box;
-      border: 2px solid #a9a9a9;
-      background: #ffffff;
-      font-size: 25px;
-      color: #222;
-      outline: none;
+      border: 2px solid #aaa;
+      font-size: 26px;
+      color: #333;
+      background: rgba(255,255,255,0.95);
     }
-
-    input::placeholder {
-      color: #8e8e8e;
-      opacity: 1;
-    }
-
-    .connect {
+    input::placeholder { color: #8b8b8b; }
+    button {
       width: 100%;
       height: 88px;
-      margin-top: 29px;
+      margin-top: 28px;
       border: 0;
-      background: #064757;
-      color: #ffffff;
+      background: #064a56;
+      color: #fff;
       font-size: 36px;
-      font-weight: 400;
       cursor: pointer;
     }
-
     .terms-link {
-      position: relative;
-      z-index: 2;
-      display: block;
-      margin-top: 190px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 20px;
       text-align: center;
-      color: #0047ff;
-      font-size: 36px;
-      text-decoration: underline;
-      background: #ffffff;
-      padding: 25px 0 18px 0;
+      font-size: 32px;
     }
-
-    @media (max-width: 750px) {
+    .terms-link a { color: #004eea; text-decoration: underline; }
+    @media (max-width: 760px) {
+      body { display: block; }
       .page { width: 100vw; min-height: 100vh; }
-      .form-box { width: calc(100vw - 110px); }
+      .logo { width: 79vw; margin-top: 7.7vw; margin-bottom: 3.7vw; }
+      .form-box { width: 85.6vw; padding: 7.7vw 5.3vw 8.3vw; }
+      input { height: 10.5vw; margin-bottom: 5.3vw; padding: 0 2.9vw; font-size: 3.45vw; }
+      button { height: 11.7vw; margin-top: 3.7vw; font-size: 4.8vw; }
+      .terms-link { font-size: 4.25vw; bottom: 2.7vw; }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <div class="bg"></div>
-    <div class="logo"></div>
-
-    <form class="form-box">
-      <input type="text" placeholder="First name" required>
-      <input type="text" placeholder="Last name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="tel" placeholder="Phone">
-      <button class="connect" type="submit">Connect</button>
+    <img class="logo" src="assets/1800m-header.png" alt="1800M ST" />
+    <form class="form-box" method="GET" action="http://www.msftconnecttest.com/redirect">
+      <input type="text" name="first_name" placeholder="First name" required />
+      <input type="text" name="last_name" placeholder="Last name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="tel" name="phone" placeholder="Phone" required />
+      <button type="submit">Connect</button>
     </form>
-
-    <a class="terms-link" href="terms.html">Terms and Conditions</a>
+    <div class="terms-link"><a href="terms.html">Terms and Conditions</a></div>
   </main>
 </body>
 </html>
