@@ -13,15 +13,11 @@
   .wifi-input:focus { border-color: #777777; }
   #firstName { top: 32.7%; } #lastName { top: 41.55%; } #email { top: 50.55%; } #phone { top: 59.35%; }
   .connect-btn { position: absolute; left: 12.55%; top: 70.48%; width: 74.65%; height: 6.68%; border: 0; background: #004a57; color: #ffffff; font-size: clamp(18px, 5.1vw, 38px); font-family: Arial, Helvetica, sans-serif; cursor: pointer; }
-  .terms-link{position:absolute;left:0;right:0;bottom:18px;height:45px;text-align:center;z-index:9999}
-  .terms-link a{display:block;width:100%;height:45px;color:transparent!important;text-decoration:none!important;font-size:0!important}
-  main.page>a,body>a{display:none!important}
-  body > a[href*="terms"], a[href*="terms-of-use"], a[href*="terms.html"]:not(.terms-link a){display:none!important}
-</style>
+  .terms-click-area { position: absolute; left: 26%; bottom: 2%; width: 48%; height: 5%; z-index: 9999; display: block; }
+  </style>
 </head>
 <body>
   <main class="page">
-    <a class="terms-click-area" href="terms.html" aria-label="Terms and Conditions"></a>
     <form id="wifiForm">
       <input class="wifi-input" id="firstName" name="first_name" type="text" placeholder="First name" autocomplete="given-name" required />
       <input class="wifi-input" id="lastName" name="last_name" type="text" placeholder="Last name" autocomplete="family-name" required />
@@ -29,6 +25,7 @@
       <input class="wifi-input" id="phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel" required />
       <button class="connect-btn" type="submit">Connect</button>
     </form>
+    <a class="terms-click-area" href="terms.html" aria-label="Terms and Conditions"></a>
     </main>
 <script>
 (function () {
