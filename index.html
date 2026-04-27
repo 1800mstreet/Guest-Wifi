@@ -48,8 +48,7 @@
       const separator = baseGrantUrl.includes('?') ? '&' : '?';
       window.location.href = baseGrantUrl + separator + 'continue_url=' + encodeURIComponent(continueUrl);
     } else {
-      alert('This page must be opened through the Meraki splash redirect to grant internet access.');
-    }
+     }
   });
 })();
 </script>
